@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../layouts/MainLayout.astro';
+import ProjectFilter from '../components/ProjectFilter.vue';
+import SectionTitle from '../components/SectionTitle.astro';
+
+const projects = await getCollection('projects');
+const projectData = projects.map((project) => ({
+  id: project.id,
+  ...project.data,
+}));
+---
+
+<MainLayout
+  title="Projects"
+  description="A searchable project portfolio using Astro Content Collections and a small Vue island for filtering."
+>
+  <section id="top" class="container-page py-16 pt-32 sm:py-20 sm:pt-36">
+    <SectionTitle
+      eyebrow="Projects"
+      title="Project library"
+      description="Filter by category or search by project name, description, and tech stack."
+    />
+    <ProjectFilter client:load projects={projectData} />
+  </section>
+</MainLayout>

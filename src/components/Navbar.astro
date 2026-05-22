@@ -1,0 +1,51 @@
+---
+import MobileNav from './MobileNav.vue';
+import ThemeToggle from './ThemeToggle.vue';
+import { navItems, profile } from '../data/profile';
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+---
+
+<header class="fixed inset-x-0 top-4 z-40">
+  <a
+    href="/"
+    class="focus-ring brand-mark fixed left-[7.5vw] top-9 hidden h-12 w-12 -translate-x-1/2 items-center justify-center text-white transition hover:scale-105 hover:text-cyan-200 hover:drop-shadow-[0_0_18px_rgba(36,244,255,0.5)] lg:inline-flex"
+    aria-label="Home"
+  >
+    <span aria-hidden="true">BR</span>
+  </a>
+
+  <nav class="container-page grid grid-cols-[auto_1fr_auto] items-center gap-3" aria-label="Main navigation">
+    <a
+      href="/"
+      class="focus-ring brand-mark inline-flex h-11 w-11 items-center justify-center text-white transition hover:scale-105 hover:text-cyan-200 hover:drop-shadow-[0_0_18px_rgba(36,244,255,0.5)] lg:invisible"
+      aria-label="Home"
+    >
+      <span aria-hidden="true">{profile.initials}</span>
+    </a>
+
+    <div class="mx-auto hidden min-w-[34rem] items-center justify-center gap-8 rounded-full border border-white/20 bg-black/[0.42] px-6 py-3 shadow-2xl shadow-black/40 backdrop-blur-2xl md:flex">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'focus-ring nav-link rounded-full px-3 py-1 text-sm font-extrabold tracking-normal',
+              isActive(item.href) && 'is-active',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="flex items-center gap-2">
+      <ThemeToggle client:load />
+      <MobileNav client:load items={navItems} />
+    </div>
+  </nav>
+</header>

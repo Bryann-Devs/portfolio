@@ -1,0 +1,20 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import ContactForm from '../components/ContactForm.vue';
+import SectionTitle from '../components/SectionTitle.astro';
+import { profile } from '../data/profile';
+---
+
+<MainLayout
+  title="Contact"
+  description="Contact page with email, GitHub, LinkedIn, and a simple portfolio contact form UI."
+>
+  <section id="top" class="container-page py-16 pt-32 sm:py-20 sm:pt-36">
+    <SectionTitle
+      eyebrow="Contact"
+      title="Get in touch"
+      description="Use the form UI, copy my email, or connect through GitHub and LinkedIn."
+    />
+    <ContactForm client:visible email={profile.email} github={profile.github} linkedin={profile.linkedin} />
+  </section>
+</MainLayout>

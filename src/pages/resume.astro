@@ -1,0 +1,51 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import { profile, skillGroups } from '../data/profile';
+---
+
+<MainLayout
+  title="Resume"
+  description="Resume overview for an IT student portfolio."
+>
+  <section id="top" class="container-page py-16 pt-32 sm:py-20 sm:pt-36">
+    <SectionTitle
+      eyebrow="Resume"
+      title="Resume snapshot"
+      description="A simple web resume section you can expand with real experience, certifications, and a downloadable PDF."
+    />
+
+    <div class="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
+      <aside class="glass-panel rounded-2xl p-6">
+        <h2 class="text-xl font-semibold text-[var(--page-text)]">{profile.name}</h2>
+        <p class="mt-2 text-[var(--page-muted)]">{profile.role}</p>
+        <a href={`mailto:${profile.email}`} class="focus-ring mt-5 inline-flex rounded-md text-sm font-semibold text-cyan-300 hover:text-cyan-100">
+          {profile.email}
+        </a>
+      </aside>
+
+      <div class="space-y-5">
+        <section class="glass-panel rounded-2xl p-6">
+          <h2 class="text-xl font-semibold text-[var(--page-text)]">Education</h2>
+          <p class="mt-3 leading-7 text-[var(--page-muted)]">
+            Add your school, program, expected graduation, relevant coursework, academic projects, and certifications.
+          </p>
+        </section>
+
+        <section class="glass-panel rounded-2xl p-6">
+          <h2 class="text-xl font-semibold text-[var(--page-text)]">Technical Skills</h2>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            {
+              skillGroups.map((group) => (
+                <div>
+                  <h3 class="font-semibold text-[var(--page-text)]">{group.title}</h3>
+                  <p class="mt-2 text-sm leading-6 text-[var(--page-muted)]">{group.skills.join(', ')}</p>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</MainLayout>

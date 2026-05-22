@@ -1,0 +1,64 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import SkillBadge from '../components/SkillBadge.astro';
+import { skillGroups } from '../data/profile';
+---
+
+<MainLayout
+  title="About"
+  description="About an IT student interested in web development, systems, networking, databases, and software development."
+>
+  <section id="top" class="container-page py-16 pt-32 sm:py-20 sm:pt-36">
+    <SectionTitle
+      eyebrow="About"
+      title="IT student building a practical technical foundation"
+      description="I am studying information technology with interests across web development, systems, networking, databases, and software development. I like projects that connect theory to something people can actually use."
+    />
+
+    <div class="grid gap-5 lg:grid-cols-3">
+      <article class="glass-panel rounded-2xl p-6 lg:col-span-2">
+        <h2 class="text-xl font-semibold text-[var(--page-text)]">Introduction</h2>
+        <p class="mt-4 leading-8 text-[var(--page-muted)]">
+          I am learning how to design, build, test, document, and deploy software projects. My current focus is creating portfolio-ready work with clean interfaces, readable code, and clear explanations of the technical decisions behind each project.
+        </p>
+        <p class="mt-4 leading-8 text-[var(--page-muted)]">
+          I am especially interested in web applications, database-backed systems, network planning, and the way software supports real operational workflows.
+        </p>
+      </article>
+
+      <article class="glass-panel rounded-2xl p-6">
+        <h2 class="text-xl font-semibold text-[var(--page-text)]">Education</h2>
+        <div class="mt-4 space-y-4 text-[var(--page-muted)]">
+          <div>
+            <p class="font-semibold text-[var(--page-text)]">Information Technology Student</p>
+            <p class="mt-1 text-sm">Your school name</p>
+          </div>
+          <p class="text-sm leading-6">
+            Add your degree, diploma, coursework, graduation date, certifications, and academic highlights here.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="container-page pb-20">
+    <SectionTitle
+      eyebrow="Skills"
+      title="Skill areas"
+      description="Grouped by the areas I am actively learning and applying in projects."
+    />
+    <div class="grid gap-5 md:grid-cols-2">
+      {
+        skillGroups.map((group) => (
+          <article class="card-hover glass-panel rounded-2xl p-6">
+            <h2 class="text-lg font-semibold text-[var(--page-text)]">{group.title}</h2>
+            <div class="mt-4 flex flex-wrap gap-3">
+              {group.skills.map((skill) => <SkillBadge label={skill} />)}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>

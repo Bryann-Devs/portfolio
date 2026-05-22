@@ -1,0 +1,113 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../layouts/MainLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import CapabilityCard from '../components/CapabilityCard.astro';
+import { profile, skillGroups } from '../data/profile';
+
+const projects = await getCollection('projects');
+const featuredProjects = projects.filter((project) => project.data.featured).slice(0, 4);
+
+const capabilityIcons = ['<>', '{}', 'IP'];
+---
+
+<MainLayout
+  title="Home"
+  description="BRYAN is an IT student portfolio focused on responsive web development, UI engineering, databases, networking, and practical IT solutions."
+>
+  <Hero />
+
+  <section id="featured-projects" class="cinematic-section container-page py-20 sm:py-24">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <SectionTitle
+        eyebrow="Featured Projects"
+        title="Portfolio work with practical outcomes"
+        description="Selected builds that show web interfaces, database thinking, school project structure, and IT documentation."
+      />
+      <a
+        href="/projects"
+        class="focus-ring glow-button font-tech mb-10 inline-flex min-h-11 items-center justify-center rounded-full px-5 text-xs font-bold uppercase tracking-[0.08em]"
+      >
+        All Projects
+      </a>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      {
+        featuredProjects.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            techStack={project.data.techStack}
+            github={project.data.github}
+            demo={project.data.demo}
+            category={project.data.category}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="container-page py-16 sm:py-24">
+    <div class="max-w-4xl">
+      <p class="text-2xl font-bold leading-snug text-[var(--page-text)] sm:text-3xl">
+        I&apos;m an IT student interested in building useful digital solutions, from responsive websites to database-driven systems.
+        <span class="text-cyan-200"> I enjoy turning ideas into clean, practical, and interactive experiences.</span>
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href="/about" class="focus-ring ghost-button font-tech inline-flex min-h-11 items-center justify-center rounded-full px-5 text-xs font-bold uppercase tracking-[0.08em]">
+          More About Me
+        </a>
+        <a href={profile.resume} class="focus-ring ghost-button font-tech inline-flex min-h-11 items-center justify-center rounded-full px-5 text-xs font-bold uppercase tracking-[0.08em]">
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="cinematic-section container-page py-20 sm:py-24">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <SectionTitle
+        eyebrow="Skills"
+        title="Capabilities I am building"
+        description="A practical stack for internships, school projects, and junior developer work."
+      />
+      <a href="/about" class="focus-ring ghost-button font-tech mb-10 inline-flex min-h-11 items-center justify-center rounded-full px-5 text-xs font-bold uppercase tracking-[0.08em]">
+        Skill Details
+      </a>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-3">
+      {
+        skillGroups.map((group, index) => (
+          <CapabilityCard
+            icon={capabilityIcons[index] ?? 'IT'}
+            title={group.title}
+            description={group.description}
+            technologies={group.skills}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="container-page py-20 sm:py-28">
+    <div class="glass-panel relative overflow-hidden rounded-3xl px-6 py-14 text-center sm:px-10 sm:py-20">
+      <div class="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/60 to-transparent"></div>
+      <p class="font-tech text-xs font-semibold uppercase tracking-[0.32em] text-cyan-300">Ready to explore my work?</p>
+      <h2 class="font-tech mx-auto mt-4 max-w-3xl text-2xl font-black uppercase leading-snug tracking-[0.08em] text-[var(--page-text)] sm:text-4xl">
+        Check out my projects or connect with me for internships, collaborations, or opportunities.
+      </h2>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <a href="/projects" class="focus-ring glow-button font-tech inline-flex min-h-12 items-center justify-center rounded-full px-6 text-xs font-bold uppercase tracking-[0.08em]">
+          View Projects
+        </a>
+        <a href="/contact" class="focus-ring ghost-button font-tech inline-flex min-h-12 items-center justify-center rounded-full px-6 text-xs font-bold uppercase tracking-[0.08em]">
+          Contact Me
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

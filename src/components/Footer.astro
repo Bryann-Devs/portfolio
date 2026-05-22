@@ -1,0 +1,20 @@
+---
+import { navItems, profile } from '../data/profile';
+---
+
+<footer class="border-t border-[var(--page-border)] py-10">
+  <div class="container-page flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <p class="font-tech font-black tracking-[0.12em] text-[var(--page-text)]">{profile.initials}</p>
+      <p class="mt-1 text-sm text-[var(--page-muted)]">{profile.role}</p>
+      <p class="mt-2 text-xs text-[var(--page-muted)]">&copy; 2026 {profile.name}. All rights reserved.</p>
+    </div>
+    <div class="flex flex-wrap items-center gap-3">
+      {navItems.map((item) => <a href={item.href} class="focus-ring font-tech rounded-full px-3 py-2 text-xs text-[var(--page-muted)] hover:bg-white/5 hover:text-cyan-200">{item.label}</a>)}
+      <a href={profile.github} class="focus-ring font-tech rounded-full px-3 py-2 text-xs text-[var(--page-muted)] hover:bg-white/5 hover:text-cyan-200" target="_blank" rel="noreferrer">GitHub</a>
+      <a href={profile.linkedin} class="focus-ring font-tech rounded-full px-3 py-2 text-xs text-[var(--page-muted)] hover:bg-white/5 hover:text-cyan-200" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href={`mailto:${profile.email}`} class="focus-ring font-tech rounded-full px-3 py-2 text-xs text-[var(--page-muted)] hover:bg-white/5 hover:text-cyan-200">Email</a>
+      <a href="#top" aria-label="Back to top" class="focus-ring font-tech grid h-10 w-10 place-items-center rounded-full border border-[var(--page-border)] text-[0.65rem] font-bold text-cyan-100 hover:border-cyan-300/50 hover:shadow-[0_0_22px_rgba(36,244,255,0.18)]">Top</a>
+    </div>
+  </div>
+</footer>
