@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Menu, X } from 'lucide-vue-next';
+import Menu from 'lucide-vue-next/dist/esm/icons/menu.js';
+import X from 'lucide-vue-next/dist/esm/icons/x.js';
 import { useToggle } from '@vueuse/core';
 
 interface NavItem {

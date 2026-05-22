@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Check, Copy, Github, Linkedin, Mail, Send } from 'lucide-vue-next';
+import Check from 'lucide-vue-next/dist/esm/icons/check.js';
+import Copy from 'lucide-vue-next/dist/esm/icons/copy.js';
+import Github from 'lucide-vue-next/dist/esm/icons/github.js';
+import Linkedin from 'lucide-vue-next/dist/esm/icons/linkedin.js';
+import Mail from 'lucide-vue-next/dist/esm/icons/mail.js';
+import Send from 'lucide-vue-next/dist/esm/icons/send.js';
 
 interface Props {
   email: string;

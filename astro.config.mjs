@@ -17,7 +17,7 @@ export default defineConfig({
     },
     optimizeDeps: {
       disabled: true,
-      exclude: ['@astrojs/vue', 'lucide-vue-next'],
+      exclude: ['@astrojs/vue'],
     },
   },
   site: 'https://example.com',

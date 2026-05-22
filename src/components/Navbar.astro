@@ -27,13 +27,13 @@ const isActive = (href: string) =>
       <span aria-hidden="true">{profile.initials}</span>
     </a>
 
-    <div class="mx-auto hidden min-w-[34rem] items-center justify-center gap-8 rounded-full border border-white/20 bg-black/[0.42] px-6 py-3 shadow-2xl shadow-black/40 backdrop-blur-2xl md:flex">
+    <div class="mx-auto hidden min-w-[31rem] items-center justify-between gap-8 rounded-full border border-white/20 bg-black/[0.42] px-8 py-3 shadow-2xl shadow-black/40 backdrop-blur-2xl md:flex">
       {
         navItems.map((item) => (
           <a
             href={item.href}
             class:list={[
-              'focus-ring nav-link rounded-full px-3 py-1 text-sm font-extrabold tracking-normal',
+              'focus-ring nav-link rounded-full px-3 py-1 text-[16px] font-normal tracking-normal',
               isActive(item.href) && 'is-active',
             ]}
           >

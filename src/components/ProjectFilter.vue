@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { ExternalLink, Github, Search, SlidersHorizontal } from 'lucide-vue-next';
+import ExternalLink from 'lucide-vue-next/dist/esm/icons/external-link.js';
+import Github from 'lucide-vue-next/dist/esm/icons/github.js';
+import Search from 'lucide-vue-next/dist/esm/icons/search.js';
+import SlidersHorizontal from 'lucide-vue-next/dist/esm/icons/sliders-horizontal.js';
 
 interface Project {
   id: string;

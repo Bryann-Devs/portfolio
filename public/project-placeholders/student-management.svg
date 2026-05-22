@@ -1,5 +1,5 @@
 <svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="720" fill="#000"/>
   <rect x="120" y="120" width="960" height="480" rx="36" fill="#050607" stroke="#00f5ff" stroke-opacity=".35" stroke-width="2"/>
-  <text x="600" y="380" fill="#00f5ff" font-family="Arial, sans-serif" font-size="88" font-weight="700" text-anchor="middle">SMS</text>
+  <text x="600" y="380" fill="#00f5ff" font-family="Roc Grotesk, Roc Grotesc, Inter, Arial, sans-serif" font-size="88" font-weight="700" text-anchor="middle">SMS</text>
 </svg>

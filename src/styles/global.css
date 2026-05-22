@@ -1,9 +1,65 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Roc Grotesk";
+  src: url("/fonts/roc-grotesk-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roc Grotesk";
+  src: url("/fonts/roc-grotesk-medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roc Grotesk";
+  src: url("/fonts/roc-grotesk-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roc Grotesk";
+  src: url("/fonts/roc-grotesk-black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Wide Grotesk";
+  src: url("/fonts/wide-grotesk-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Wide Grotesk";
+  src: url("/fonts/wide-grotesk-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Wide Grotesk";
+  src: url("/fonts/wide-grotesk-heavy.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --font-sans: Inter, Manrope, ui-sans-serif, system-ui, sans-serif;
-  --font-display: Syncopate, Inter, ui-sans-serif, system-ui, sans-serif;
-  --font-tech: Michroma, Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Roc Grotesk", "Roc Grotesc", Inter, Manrope, ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Roc Grotesk", "Roc Grotesc", Syncopate, Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-tech: "Roc Grotesk", "Roc Grotesc", Michroma, Inter, ui-sans-serif, system-ui, sans-serif;
   --color-bg: #000000;
   --color-surface: #050607;
   --color-surface-soft: #090c0e;
@@ -58,6 +114,10 @@ body {
 
 .font-tech {
   font-family: var(--font-tech);
+}
+
+.font-wide {
+  font-family: "Wide Grotesk", "Wide Grotesc", "Roc Grotesk", "Roc Grotesc", var(--font-display);
 }
 
 a,
@@ -163,18 +223,43 @@ textarea {
   content: none;
 }
 
+.page-load-slide {
+  animation: page-slide-down 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform, filter;
+}
+
+@keyframes page-slide-down {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(-56px);
+  }
+
+  62% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
 .glow-button {
   position: relative;
+  isolation: isolate;
   border: 1px solid rgba(36, 244, 255, 0.55);
-  background: linear-gradient(135deg, #24f4ff, #12d7df);
-  color: #031012;
-  box-shadow: 0 0 22px rgba(36, 244, 255, 0.42), 0 0 52px rgba(36, 244, 255, 0.16);
+  background: linear-gradient(135deg, #0b7d84, #087078);
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(36, 244, 255, 0.26), 0 0 42px rgba(36, 244, 255, 0.1);
 }
 
 .glow-button:hover {
   color: #000000;
   transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 0 34px rgba(36, 244, 255, 0.62), 0 0 80px rgba(36, 244, 255, 0.28);
+  background: linear-gradient(135deg, #22f4ff, #15dce6);
+  box-shadow: 0 0 24px rgba(36, 244, 255, 0.48), 0 0 60px rgba(36, 244, 255, 0.18);
 }
 
 .ghost-button {
@@ -194,6 +279,11 @@ textarea {
 
 .nav-link {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+  font-family: "Roc Grotesk", "Roc Grotesc", sans-serif;
   color: #f7fdff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
   transition:
@@ -205,7 +295,7 @@ textarea {
 .nav-link:hover,
 .nav-link.is-active {
   color: #24f4ff;
-  transform: scale(1.04);
+  transform: scale(1.14);
   text-shadow: 0 0 14px rgba(36, 244, 255, 0.78), 0 0 34px rgba(36, 244, 255, 0.34);
 }
 

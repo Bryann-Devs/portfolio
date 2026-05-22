@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Moon, Sun } from 'lucide-vue-next';
+import Moon from 'lucide-vue-next/dist/esm/icons/moon.js';
+import Sun from 'lucide-vue-next/dist/esm/icons/sun.js';
 import { useDark, useToggle } from '@vueuse/core';
 
 const isDark = useDark({
